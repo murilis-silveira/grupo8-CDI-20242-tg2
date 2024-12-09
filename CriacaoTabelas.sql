@@ -38,7 +38,7 @@ CREATE TABLE Empregado (
 CREATE TABLE Cliente(
   CodCliente INT PRIMARY KEY AUTO_INCREMENT,
   Nome VARCHAR(50) NOT NULL,
-  Contato INT NOT NULL,
+  Contato VARCHAR(11) NOT NULL,
   CPF VARCHAR(11),
   CPNJ VARCHAR(14)
 ); 
@@ -47,7 +47,7 @@ CREATE TABLE Venda (
   CodNF INT PRIMARY KEY AUTO_INCREMENT,
   DataVenda DATE NOT NULL,
   Hora TIME NOT NULL,
-  Valor INT NOT NULL CHECK (Valor>=0),
+  Valor DECIMAL(10, 2) CHECK (Valor>=0),
   NrItens INT CHECK (NrItens >=1), 
   CodCliente INT NOT NULL, FOREIGN KEY (CodCliente) REFERENCES Cliente(CodCLiente),
   CodFilial INT NOT NULL, FOREIGN KEY (CodFilial) REFERENCES Filial(CodFilial)
