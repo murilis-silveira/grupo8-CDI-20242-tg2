@@ -47,6 +47,7 @@ CREATE TABLE Venda (
   CodNF INT PRIMARY KEY AUTO_INCREMENT,
   DataVenda DATE NOT NULL,
   Hora TIME NOT NULL,
+  Valor INT NOT NULL CHECK (Valor>=0),
   NrItens INT CHECK (NrItens >=1), 
   CodCliente INT NOT NULL, FOREIGN KEY (CodCliente) REFERENCES Cliente(CodCLiente),
   CodFilial INT NOT NULL, FOREIGN KEY (CodFilial) REFERENCES Filial(CodFilial)
