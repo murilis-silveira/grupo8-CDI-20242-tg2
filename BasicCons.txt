@@ -1,0 +1,22 @@
+Mostra as Vendas com suas datas e quem comprou:
+
+SELECT Venda.CodNF, Venda.DataVenda, Cliente.Nome FROM Cliente JOIN Venda
+ON Cliente.CodCliente = Venda.CodCliente;
+
+Verificando a data de validade de um produto:
+
+SELECT Produto.CodProd, Produto.CodBarras, Lote.DataVal, Lote.CodLT  FROM Produto JOIN Lote
+ON Produto.CodLT = Lote.CodLT;
+
+Verificando fornecedor de um produto:
+
+SELECT Produto.CodProd, Produto.CodBarras, Fornecedor.CodForn, Fornecedor.CNPJ FROM Produto JOIN Lote JOIN Fornecedor
+ON Produto.CodLT = Lote.CodLT AND Lote.CodForn = Fornecedor.CodForn;
+
+Conta quantas compras cada cliente tem registradas:
+
+SELECT Cliente.Nome, COUNT(*) AS total_compras  
+FROM Venda JOIN Cliente
+WHERE Venda.CodCliente = Cliente.CodCliente
+GROUP BY Venda.CodCliente;
+
