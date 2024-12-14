@@ -20,3 +20,23 @@ FROM Venda JOIN Cliente
 WHERE Venda.CodCliente = Cliente.CodCliente
 GROUP BY Venda.CodCliente;
 
+Lista o comprador de cada produto:
+
+SELECT Produto.CodProd, Venda.CodNF, Cliente.Nome  
+FROM Venda JOIN Cliente JOIN Produto
+WHERE Venda.CodCliente = Cliente.CodCliente AND Produto.CodNF = Venda.CodNF;
+
+Lista quantas filiais há em cada cidade;
+
+SELECT Cidade.Nome, Count(*) as total_filiais
+FROM Cidade JOIN Filial
+Where Cidade.Nome = Filial.Cidade
+GROUP BY Cidade.Nome;
+
+
+Mostra o total gasto por cliente:
+
+SELECT Cliente.Nome, SUM(Preco) as Total_Gasto  
+FROM Venda JOIN Cliente JOIN Produto
+WHERE Venda.CodCliente = Cliente.CodCliente AND Produto.CodNF = Venda.CodNF
+Group By Cliente.Nome;
