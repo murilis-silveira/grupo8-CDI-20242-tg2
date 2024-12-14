@@ -1,0 +1,77 @@
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+
+public class ConsultaCidade extends JFrame {
+
+    private JTextField txtConsulta;
+    private JButton btnConsultar;
+    private JTable tableCidades;
+    private DefaultTableModel tableModel;
+
+    public ConsultaCidade() {
+        setTitle("Consulta de Cidades");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+        setLayout(null);
+
+        JLabel lblConsulta = new JLabel("Pesquisar:");
+        lblConsulta.setBounds(20, 20, 80, 25);
+        add(lblConsulta);
+
+        txtConsulta = new JTextField();
+        txtConsulta.setBounds(100, 20, 300, 25);
+        add(txtConsulta);
+
+        btnConsultar = new JButton("Consultar");
+        btnConsultar.setBounds(420, 20, 120, 25);
+        add(btnConsultar);
+
+        tableModel = new DefaultTableModel(new String[]{"Nome", "SiglaUF"}, 0);
+        tableCidades = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(tableCidades);
+        scrollPane.setBounds(20, 60, 540, 280);
+        add(scrollPane);
+
+        btnConsultar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                realizarConsulta(txtConsulta.getText().trim());
+            }
+        });
+    }
+
+    private void realizarConsulta(String termo) {
+        tableModel.setRowCount(0);
+
+        String url = "jdbc:mysql://localhost:3306/sua_base_de_dados";
+        String user = "seu_usuario";
+        String password = "sua_senha";
+
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String sql = "SELECT nome, sigla_uf FROM cidades WHERE nome LIKE ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, "%" + termo + "%");
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        String nome = rs.getString("nome");
+                        String siglaUF = rs.getString("sigla_uf");
+                        tableModel.addRow(new Object[]{nome, siglaUF});
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao consultar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ConsultaCidade frame = new ConsultaCidade();
+            frame.setVisible(true);
+        });
+    }
+}
