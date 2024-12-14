@@ -4,7 +4,7 @@
  */
 package model.bean;
 
-import java.math.BigDecimal;
+
 
 /**
  *
@@ -14,7 +14,7 @@ public class Produto {
     
     private int CodProd;
     private int CodBarras;
-    private BigDecimal Preco;
+    private float Preco;
     private int CodLT;
     private int CodNF;
 
@@ -34,11 +34,11 @@ public class Produto {
         this.CodBarras = CodBarras;
     }
 
-    public BigDecimal getPreco() {
+    public float getPreco() {
         return Preco;
     }
 
-    public void setPreco(BigDecimal Preco) {
+    public void setPreco(float Preco) {
         this.Preco = Preco;
     }
 

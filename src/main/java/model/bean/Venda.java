@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model.bean;
-import java.sql.Date;
-import java.sql.Time;
-import java.math.BigDecimal;
+
 
 /**
  *
@@ -14,9 +12,9 @@ import java.math.BigDecimal;
 public class Venda {
     
     private int CodNF;
-    private Date DataVenda;
-    private Time Hora;
-    private BigDecimal Valor;
+    private String DataVenda;
+    private String Hora;
+    private Float Valor;
     private int NrItens;
     private int CodCliente;
     private int CodFilial;
@@ -29,27 +27,27 @@ public class Venda {
         this.CodNF = CodNF;
     }
 
-    public Date getDataVenda() {
+    public String getDataVenda() {
         return DataVenda;
     }
 
-    public void setDataVenda(Date DataVenda) {
+    public void setDataVenda(String DataVenda) {
         this.DataVenda = DataVenda;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return Hora;
     }
 
-    public void setHora(Time Hora) {
+    public void setHora(String Hora) {
         this.Hora = Hora;
     }
 
-    public BigDecimal getValor() {
+    public Float getValor() {
         return Valor;
     }
 
-    public void setValor(BigDecimal Valor) {
+    public void setValor(Float Valor) {
         this.Valor = Valor;
     }
 

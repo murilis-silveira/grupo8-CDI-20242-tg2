@@ -4,7 +4,7 @@
  */
 package model.bean;
 
-import java.sql.Date;
+
 
 /**
  *
@@ -13,8 +13,8 @@ import java.sql.Date;
 public class Lote {
     
     private int CodLT;
-    private Date DataFab;
-    private Date DataVal;
+    private String DataFab;
+    private String DataVal;
     private int CodForn;            
 
     public int getCodLT() {
@@ -25,19 +25,19 @@ public class Lote {
         this.CodLT = CodLT;
     }
 
-    public Date getDataFab() {
+    public String getDataFab() {
         return DataFab;
     }
 
-    public void setDataFab(Date DataFab) {
+    public void setDataFab(String DataFab) {
         this.DataFab = DataFab;
     }
 
-    public Date getDataVal() {
+    public String getDataVal() {
         return DataVal;
     }
 
-    public void setDataVal(Date DataVal) {
+    public void setDataVal(String DataVal) {
         this.DataVal = DataVal;
     }
 

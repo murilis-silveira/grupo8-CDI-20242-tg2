@@ -13,8 +13,8 @@ public class Cliente {
     private int CodCliente;
     private String Nome;
     private String Contato;
-    private String CPF;
-    private String CNPJ;
+    private String CPF_CNPJ;
+  
 
     public int getCodCliente() {
         return CodCliente;
@@ -40,24 +40,13 @@ public class Cliente {
         this.Contato = Contato;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCPF_CNPJ() {
+        return CPF_CNPJ;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-
-    public String getCNPJ() {
-        return CNPJ;
-    }
-
-    public void setCNPJ(String CNPJ) {
-        this.CNPJ = CNPJ;
-    }
-    
-    
-    
-    
+    public void setCPF_CNPJ(String CPF_CNPJ) {
+        this.CPF_CNPJ = CPF_CNPJ;
+    }  
+            
     
 }
