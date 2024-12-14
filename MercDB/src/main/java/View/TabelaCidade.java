@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.bean.Cidade;
 import model.dao.CidadeDAO;
 
@@ -19,7 +21,30 @@ public class TabelaCidade extends javax.swing.JFrame {
      */
     public TabelaCidade() {
         initComponents();
+        
+         readJTable();
     }
+    
+      public void readJTable()
+    {
+         DefaultTableModel modelo = (DefaultTableModel) TableCidade.getModel();
+         
+        modelo.setNumRows(0);
+         
+         CidadeDAO cdao = new CidadeDAO();
+         
+         for(Cidade c: cdao.read())
+         {
+             modelo.addRow(new Object[]
+                {
+                 c.getNome(),
+                 c.getSiglaUF()               
+                });         
+         
+         }         
+         
+     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +64,7 @@ public class TabelaCidade extends javax.swing.JFrame {
         Atualizar = new javax.swing.JButton();
         Excluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableCidade = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,8 +88,18 @@ public class TabelaCidade extends javax.swing.JFrame {
         });
 
         Atualizar.setText("Atualizar");
+        Atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizarActionPerformed(evt);
+            }
+        });
 
         Excluir.setText("Excluir");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,9 +120,9 @@ public class TabelaCidade extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Excluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Atualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(Cadastrar))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,7 +144,7 @@ public class TabelaCidade extends javax.swing.JFrame {
                     .addComponent(Excluir)))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableCidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -125,7 +160,12 @@ public class TabelaCidade extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        TableCidade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableCidadeMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TableCidade);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,10 +203,84 @@ public class TabelaCidade extends javax.swing.JFrame {
         c.setNome(txtNome.getText());
         c.setSiglaUF(txtUF.getText());        
         dao.create(c);       
-
+        
+        readJTable();
+         
        txtNome.setText("");
        txtUF.setText("");
     }//GEN-LAST:event_CadastrarActionPerformed
+
+    private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
+
+
+          if(TableCidade.getSelectedRow() != -1)
+        {
+            Cidade c = new Cidade();
+            CidadeDAO dao = new CidadeDAO();
+            
+           
+                    //(String)TableCidade.getValueAt(TableCidade.getSelectedRow(), 0);
+            c.setNome(txtNome.getText());
+            c.setSiglaUF(txtUF.getText());
+           
+           /* p.setQtd(Integer.parseInt(txtQTD.getText()));
+            p.setPreco(Double.parseDouble(txtPreco.getText()));
+            p.setId((int)jtProdutos.getValueAt(jtProdutos.getSelectedRow(),0));
+            
+            */
+           
+            dao.update(c, nmt);
+
+            readJTable();
+        
+            
+        }else
+          {
+              JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada.");
+          }
+
+    }//GEN-LAST:event_AtualizarActionPerformed
+    
+    String nmt;
+    
+    
+    private void TableCidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCidadeMouseClicked
+
+    if(TableCidade.getSelectedRow() != -1)
+        {           
+            
+            txtNome.setText(TableCidade.getValueAt(TableCidade.getSelectedRow(),0).toString());
+            txtUF.setText(TableCidade.getValueAt(TableCidade.getSelectedRow(),1).toString());
+            nmt = txtNome.getText();            
+                                   
+        }
+        
+
+    }//GEN-LAST:event_TableCidadeMouseClicked
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        
+         if(TableCidade.getSelectedRow() != -1)
+        {                  
+            Cidade c = new Cidade();
+            CidadeDAO dao = new CidadeDAO();
+           
+          
+            //p.setId((int)jtProdutos.getValueAt(jtProdutos.getSelectedRow(),0));
+            
+            dao.delete(c, nmt);
+
+            readJTable();
+        
+            
+        }else
+          {
+              JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada.");
+          }                                   
+
+
+
+    }//GEN-LAST:event_ExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,9 +321,9 @@ public class TabelaCidade extends javax.swing.JFrame {
     private javax.swing.JButton Atualizar;
     private javax.swing.JButton Cadastrar;
     private javax.swing.JButton Excluir;
+    private javax.swing.JTable TableCidade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel textfield;
     private javax.swing.JLabel textfield1;
     private javax.swing.JTextField txtNome;

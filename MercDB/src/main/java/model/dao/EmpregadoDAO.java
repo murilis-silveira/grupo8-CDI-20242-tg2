@@ -14,26 +14,31 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.bean.Filial;
+import model.bean.Empregado;
 
 
 /**
  *
  * @author franc
  */
-public class FilialDAO {
+public class EmpregadoDAO {
     
     
-    public void create(Filial f)
+    public void create(Empregado f)
     {
          Connection con = ConnectionFactory.getConnection();
          PreparedStatement stmt = null;
     
       try {
-            stmt = con.prepareStatement("INSERT INTO Filial (Endereco, Cidade) Values (?, ?)");           
-            stmt.setString(1, f.getEndereco());
-            stmt.setString(2, f.getCidade());
-                        
+            stmt = con.prepareStatement("INSERT INTO Empregado (Nome, CPF, Endereco, Idade, Contato, CodFilial) Values (?, ?, ?, ?, ?, ?)");           
+            
+            stmt.setString(1, f.getNome());
+            stmt.setString(2, f.getCPF());
+            stmt.setString(3, f.getEndereco());
+            stmt.setInt(4, f.getIdade());
+            stmt.setString(5, f.getContato());
+            stmt.setInt(6, f.getCodFilial());            
+                                                            
             stmt.executeUpdate();
             
             //JOptionPane.showMessageDialog(null, "Salvo com sucesso.");
@@ -48,59 +53,65 @@ public class FilialDAO {
     
     }   
     
-    public List<Filial> read()
+    public List<Empregado> read()
     {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
         
-        List<Filial> filiais = new ArrayList<>();
+        List<Empregado> empregados = new ArrayList<>();
         
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM filial");
+            stmt = con.prepareStatement("SELECT * FROM empregado");
             rs  = stmt.executeQuery();
             
             while(rs.next())
             {
-                Filial filial = new Filial();
+                Empregado f = new Empregado();
                
-                filial.setCodFilial(rs.getInt("CodFilial"));
-                filial.setEndereco(rs.getString("Endereco"));
-                filial.setCidade(rs.getString("Cidade"));
+                f.setCodEmp(rs.getInt("CodEmp"));
+                f.setNome(rs.getString("Nome"));
+                f.setCPF(rs.getString("CPF"));
+                f.setEndereco(rs.getString("Endereco"));
+                f.setIdade(rs.getInt("Idade"));
+                f.setContato(rs.getString("Contato"));
+                f.setCodFilial(rs.getInt("CodFilial"));             
+                                                             
                 
-                
-                filiais.add(filial);
+                empregados.add(f);
                                                 
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Filial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Empregado.class.getName()).log(Level.SEVERE, null, ex);
         } finally
         {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
     
-        return filiais;
+        return empregados;
     }   
     
     
-    public void  update(Filial f)
+    public void  update(Empregado f)
     {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
        
                 
         try {
-            stmt = con.prepareStatement("UPDATE filial SET Endereco = ?, Cidade = ? WHERE CodFilial = ?");           
+            stmt = con.prepareStatement("UPDATE Empregado SET Nome = ?, CPF = ?, Endereco = ?, Idade = ?, Contato = ?, CodFilial = ? WHERE CodEmp = ?");           
             
-            stmt.setString(1, f.getEndereco());
-            stmt.setString(2, f.getCidade());
-                        
-            stmt.setInt(3, f.getCodFilial());
-           
-            
+            stmt.setString(1, f.getNome());
+            stmt.setString(2, f.getCPF());
+            stmt.setString(3, f.getEndereco());
+            stmt.setInt(4, f.getIdade());
+            stmt.setString(5, f.getContato());
+            stmt.setInt(6, f.getCodFilial());
+            stmt.setInt(7, f.getCodEmp());          
+                     
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso.");
@@ -114,15 +125,15 @@ public class FilialDAO {
             }
     }
     
-     public void  delete(Filial f)
+     public void  delete(Empregado f)
         {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
        
                 
         try {
-            stmt = con.prepareStatement("DELETE FROM filial WHERE CodFilial = ?");         
-            stmt.setInt(1, f.getCodFilial());
+            stmt = con.prepareStatement("DELETE FROM Empregado WHERE CodEmp = ?");         
+            stmt.setInt(1, f.getCodEmp());
            
             
             stmt.executeUpdate();

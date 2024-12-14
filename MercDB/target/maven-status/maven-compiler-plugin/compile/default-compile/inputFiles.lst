@@ -1,14 +1,16 @@
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\connection\ConnectionFactory.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Cidade.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Cliente.java
-C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Empregrado.java
+C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Empregado.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Filial.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Fornecedor.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Lote.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Produto.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\bean\Venda.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\dao\CidadeDAO.java
+C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\dao\EmpregadoDAO.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\model\dao\FilialDAO.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\View\TabelaCidade.java
+C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\View\TabelaEmpregado.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\View\TabelaFilial.java
 C:\Users\franc\Documents\NetBeansProjects\MercDB\src\main\java\View\TelaPrincipal.java
