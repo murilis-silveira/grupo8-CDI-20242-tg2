@@ -40,3 +40,9 @@ SELECT Cliente.Nome, SUM(Preco) as Total_Gasto
 FROM Venda JOIN Cliente JOIN Produto
 WHERE Venda.CodCliente = Cliente.CodCliente AND Produto.CodNF = Venda.CodNF
 Group By Cliente.Nome;
+
+View - Validade de Produto Não Vendido;
+SELECT Produto.CodProd, Produto.CodBarras, Lote.DataVal, Fornecedor.CodForn, Fornecedor.CNPJ, fornecedor.Contato 
+FROM Produto JOIN Lote JOIN Fornecedor
+WHERE Produto.CodNF IS NULL AND Produto.CodLT = Lote.CodLT 
+AND Lote.CodForn = Fornecedor.CodForn AND DataVal < current_date();
