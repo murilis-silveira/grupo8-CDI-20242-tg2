@@ -59,3 +59,20 @@ CREATE TABLE Produto (
   CodLT INT NOT NULL, FOREIGN KEY (CodLT) REFERENCES Lote(CodLT),
   CodNF INT, FOREIGN KEY (CodNF) REFERENCES Venda(CodNF)
 );
+
+CREATE VIEW ValidadeProduto AS
+SELECT Produto.CodProd, Produto.CodBarras, Lote.DataVal, Fornecedor.CodForn, Fornecedor.CNPJ, fornecedor.Contato 
+FROM Produto JOIN Lote JOIN Fornecedor
+WHERE Produto.CodNF IS NULL AND Produto.CodLT = Lote.CodLT 
+AND Lote.CodForn = Fornecedor.CodForn AND DataVal < current_date();
+
+CREATE VIEW VendasMensais AS
+SELECT Filial.CodFilial, 
+    COUNT(Venda.CodNF) AS Total_Vendas, 
+    SUM(Venda.Valor) AS Total_Valor
+FROM Filial
+LEFT JOIN Venda
+ON Venda.CodFilial = Filial.CodFilial 
+   AND YEAR(Venda.DataVenda) = YEAR(CURDATE()) 
+   AND MONTH(Venda.DataVenda) = MONTH(CURDATE())
+GROUP BY Filial.CodFilial;
