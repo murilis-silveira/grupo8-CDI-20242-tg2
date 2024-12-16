@@ -22,8 +22,8 @@ GROUP BY Cliente.Nome;
 
 Lista o comprador de cada produto:
 
-SELECT Produto.CodProd, Venda.CodNF, Cliente.Nome  
-FROM Venda JOIN Cliente JOIN Produto
+SELECT Produto.CodProd, Produto.CodBarras, Cliente.Nome  
+FROM Venda JOIN Cliente JOIN Produto 
 WHERE Venda.CodCliente = Cliente.CodCliente AND Produto.CodNF = Venda.CodNF;
 
 Lista quantas filiais há em cada cidade:
