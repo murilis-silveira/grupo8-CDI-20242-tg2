@@ -1,3 +1,7 @@
+create database MercDB;
+
+use MercDB;
+
 CREATE TABLE Fornecedor (
   CodForn INT PRIMARY KEY AUTO_INCREMENT,
   CNPJ VARCHAR(14) NOT NULL,
