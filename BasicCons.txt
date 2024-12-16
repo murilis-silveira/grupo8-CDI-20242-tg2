@@ -13,12 +13,12 @@ Verificando fornecedor de um produto:
 SELECT Produto.CodProd, Produto.CodBarras, Fornecedor.CodForn, Fornecedor.CNPJ FROM Produto JOIN Lote JOIN Fornecedor
 ON Produto.CodLT = Lote.CodLT AND Lote.CodForn = Fornecedor.CodForn;
 
-Conta quantas compras cada cliente tem registradas:
+Conta quantas compras cada cliente tem registradas, assim como valor total gasto:
 
-SELECT Cliente.Nome, COUNT(*) AS total_compras  
-FROM Venda JOIN Cliente
-WHERE Venda.CodCliente = Cliente.CodCliente
-GROUP BY Venda.CodCliente;
+SELECT Cliente.Nome, SUM(Valor) as Total_Gasto , COUNT(Venda.CodNF) AS total_compras  
+FROM Cliente LEFT JOIN Venda 
+ON Venda.CodCliente = Cliente.CodCliente 
+GROUP BY Cliente.Nome;
 
 Lista o comprador de cada produto:
 
@@ -32,14 +32,6 @@ SELECT Cidade.Nome, Count(*) as total_filiais
 FROM Cidade JOIN Filial
 Where Cidade.Nome = Filial.Cidade
 GROUP BY Cidade.Nome;
-
-
-Mostra o total gasto por cliente:
-
-SELECT Cliente.Nome, SUM(Preco) as Total_Gasto  
-FROM Venda JOIN Cliente JOIN Produto
-WHERE Venda.CodCliente = Cliente.CodCliente AND Produto.CodNF = Venda.CodNF
-Group By Cliente.Nome;
 
 View - Validade de Produto Não Vendido;]
 CREATE VIEW ValidadeProduto AS
