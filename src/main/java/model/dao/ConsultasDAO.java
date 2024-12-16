@@ -164,4 +164,154 @@ public class ConsultasDAO {
     
         return frs;
     }   
+    
+     public List<Consultas> readVendaCliente()
+    {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        List<Consultas> frs = new ArrayList<>();
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT Cliente.Nome, COUNT(Venda.CodNF)AS total_compras,  SUM(Valor) as Total_Gasto  FROM Cliente LEFT JOIN Venda ON Venda.CodCliente = Cliente.CodCliente GROUP BY Cliente.Nome");
+            rs  = stmt.executeQuery();
+                                              
+            
+            while(rs.next())
+            {
+                Consultas f = new Consultas();
+                
+                
+                f.setCliente(rs.getString("Cliente.Nome"));
+                f.setVenda(rs.getString("total_compras"));
+                f.setTotalGasto(rs.getString("Total_Gasto"));
+                                                                                                                                                 
+                frs.add(f);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        } finally
+        {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+    
+        return frs;
+    }   
+     
+      public List<Consultas> readProdutoFornecedor()
+    {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        List<Consultas> frs = new ArrayList<>();
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT Produto.CodProd, Produto.CodBarras, Fornecedor.CodForn FROM Produto JOIN Lote JOIN Fornecedor ON Produto.CodLT = Lote.CodLT AND Lote.CodForn = Fornecedor.CodForn");
+            rs  = stmt.executeQuery();
+                                              
+            
+            while(rs.next())
+            {
+                Consultas f = new Consultas();
+                
+                
+                f.setProduto(rs.getString("Produto.CodProd"));
+                f.setCodBarras(rs.getString("Produto.CodBarras"));
+                f.setFornecedor(rs.getString("Fornecedor.CodForn"));
+               
+                                                                                                                                                 
+                frs.add(f);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        } finally
+        {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+    
+        return frs;
+    }  
+      
+          public List<Consultas> readProdutoCliente()
+    {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        List<Consultas> frs = new ArrayList<>();
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT Produto.CodProd, Produto.CodBarras, Cliente.Nome  FROM Venda JOIN Cliente JOIN Produto WHERE Venda.CodCliente = Cliente.CodCliente AND Produto.CodNF = Venda.CodNF");
+            rs  = stmt.executeQuery();
+                                              
+            
+            while(rs.next())
+            {
+                Consultas f = new Consultas();
+                
+                
+                f.setProduto(rs.getString("Produto.CodProd"));
+                f.setCodBarras(rs.getString("Produto.CodBarras"));
+                f.setCliente(rs.getString("Cliente.Nome"));
+               
+                                                                                                                                                 
+                frs.add(f);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        } finally
+        {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+    
+        return frs;
+    } 
+    
+          public List<Consultas> readEmpFilial()
+    {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        List<Consultas> frs = new ArrayList<>();
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT Filial.CodFilial, COUNT(Empregado.CodEmp) AS total_empregado FROM Filial LEFT JOIN Empregado ON Filial.CodFilial = Empregado.CodFilial GROUP BY Filial.CodFilial");
+            rs  = stmt.executeQuery();
+                                              
+            
+            while(rs.next())
+            {
+                Consultas f = new Consultas();
+                
+                
+                f.setFilial(rs.getString("Filial.CodFilial"));
+                f.setEmp(rs.getString("total_empregado"));
+               
+                                                                                                                                                 
+                frs.add(f);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        } finally
+        {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+    
+        return frs;
+    }
 }

@@ -13,41 +13,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.bean.Detalhes;
+import model.bean.ViewVendasMensais;
 
 /**
  *
  * @author franc
  */
-public class DetalhesFornecedorDAO {
+public class ViewVendasMensaisDAO {
     
-     public List<Detalhes> count()
+    public List<ViewVendasMensais> read()
     {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
         
-        List<Detalhes> frs = new ArrayList<>();
+        List<ViewVendasMensais> frs = new ArrayList<>();
         
         
         try {
-            stmt = con.prepareStatement("SELECT COUNT(*) as count FROM fornecedor");
+            stmt = con.prepareStatement("SELECT * FROM VendasMensais");
             rs  = stmt.executeQuery();
                                               
             
             while(rs.next())
             {
-                Detalhes f = new Detalhes();
+                ViewVendasMensais f = new ViewVendasMensais();
                 
-                f.setCount(rs.getString("count"));                              
-                
+                f.setCodFilial(rs.getString("CodFilial"));
+                f.setTotalVenda(rs.getString("Total_Vendas"));
+                f.setTotalValor(rs.getString("Total_Valor"));
+                                                                 
                 frs.add(f);
                                                 
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Detalhes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewVendasMensais.class.getName()).log(Level.SEVERE, null, ex);
         } finally
         {
             ConnectionFactory.closeConnection(con, stmt, rs);
@@ -55,9 +57,6 @@ public class DetalhesFornecedorDAO {
     
         return frs;
     }   
-    
-    
-    
     
     
 }

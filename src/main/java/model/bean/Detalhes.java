@@ -15,6 +15,8 @@ public class Detalhes {
     private String minimo;
     private String maximo;
     private String soma;
+   
+   
 
     public String getCount() {
         return count;

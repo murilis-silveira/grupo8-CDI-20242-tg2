@@ -19,7 +19,7 @@ import model.bean.Detalhes;
  *
  * @author franc
  */
-public class DetalhesFornecedorDAO {
+public class DetalhesCidadeDAO {
     
      public List<Detalhes> count()
     {
@@ -32,7 +32,7 @@ public class DetalhesFornecedorDAO {
         
         
         try {
-            stmt = con.prepareStatement("SELECT COUNT(*) as count FROM fornecedor");
+            stmt = con.prepareStatement("SELECT COUNT(*) as count FROM Cidade");
             rs  = stmt.executeQuery();
                                               
             

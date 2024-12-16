@@ -17,7 +17,36 @@ public class Consultas {
     private String Data;
     private String Filial;
     private String Cidade;
+    private String Produto;
+    private String Fornecedor;
+    private String CodBarras;
+    private String Emp;
+    
 
+    public String getProduto() {
+        return Produto;
+    }
+
+    public void setProduto(String Produto) {
+        this.Produto = Produto;
+    }
+
+    public String getFornecedor() {
+        return Fornecedor;
+    }
+
+    public void setFornecedor(String Fornecedor) {
+        this.Fornecedor = Fornecedor;
+    }
+
+    public String getCodBarras() {
+        return CodBarras;
+    }
+
+    public void setCodBarras(String CodBarras) {
+        this.CodBarras = CodBarras;
+    }
+    
     public String getCidade() {
         return Cidade;
     }
@@ -72,6 +101,14 @@ public class Consultas {
 
     public void setFilial(String Filial) {
         this.Filial = Filial;
+    }
+
+    public String getEmp() {
+        return Emp;
+    }
+
+    public void setEmp(String Emp) {
+        this.Emp = Emp;
     }
     
     

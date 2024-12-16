@@ -13,41 +13,46 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.bean.Detalhes;
+import model.bean.ViewValidadeProduto;
 
 /**
  *
  * @author franc
  */
-public class DetalhesFornecedorDAO {
+public class ViewValidadeProdutoDAO {
     
-     public List<Detalhes> count()
+    public List<ViewValidadeProduto> read()
     {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
         
-        List<Detalhes> frs = new ArrayList<>();
+        List<ViewValidadeProduto> frs = new ArrayList<>();
         
         
         try {
-            stmt = con.prepareStatement("SELECT COUNT(*) as count FROM fornecedor");
+            stmt = con.prepareStatement("SELECT * FROM ValidadeProduto");
             rs  = stmt.executeQuery();
                                               
             
             while(rs.next())
             {
-                Detalhes f = new Detalhes();
+                ViewValidadeProduto f = new ViewValidadeProduto();
                 
-                f.setCount(rs.getString("count"));                              
-                
+                f.setCodProd(rs.getString("CodProd"));
+                f.setCodBarras(rs.getString("CodBarras"));
+                f.setDataVal(rs.getString("DataVal"));
+                f.setCodForn(rs.getString("CodForn"));
+                f.setCNPJ(rs.getString("CNPJ"));
+                f.setContato(rs.getString("Contato"));
+                                                                 
                 frs.add(f);
                                                 
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Detalhes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewValidadeProduto.class.getName()).log(Level.SEVERE, null, ex);
         } finally
         {
             ConnectionFactory.closeConnection(con, stmt, rs);
@@ -55,9 +60,6 @@ public class DetalhesFornecedorDAO {
     
         return frs;
     }   
-    
-    
-    
     
     
 }
