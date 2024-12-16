@@ -46,8 +46,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         sqlVendaDataComprador1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         sqlGastoPorCliente1 = new javax.swing.JButton();
+        txtViewValidadeProduto = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        sqlGastoPorCliente2 = new javax.swing.JButton();
+        sqlGastoPorCliente3 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabelas"));
 
@@ -120,7 +128,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btFiliais, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(btLotes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 50, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,7 +175,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Dinheiro Gasto Por Cliente");
+        jLabel2.setText("Produtos por Fornecedor");
 
         sqlGastoPorCliente.setText("  ");
         sqlGastoPorCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +184,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Compras feitas por Cliente");
+        jLabel3.setText("Número de Compras e Valor Gasto por Cliente");
 
         sqlVendaDataComprador1.setText("  ");
         sqlVendaDataComprador1.addActionListener(new java.awt.event.ActionListener() {
@@ -194,45 +202,109 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        txtViewValidadeProduto.setText("View 1");
+        txtViewValidadeProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtViewValidadeProdutoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("View 2");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Produtos Vencidos");
+
+        jLabel6.setText("Vendas Mensais ");
+
+        jLabel7.setText("Produtos por Comprador");
+
+        sqlGastoPorCliente2.setText("  ");
+        sqlGastoPorCliente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sqlGastoPorCliente2ActionPerformed(evt);
+            }
+        });
+
+        sqlGastoPorCliente3.setText("  ");
+        sqlGastoPorCliente3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sqlGastoPorCliente3ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Número de Empregados por Filial");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sqlVendaDataComprador)
                     .addComponent(sqlGastoPorCliente, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(sqlVendaDataComprador1)
-                    .addComponent(sqlGastoPorCliente1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sqlGastoPorCliente1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sqlGastoPorCliente2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sqlGastoPorCliente3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(146, 146, 146)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtViewValidadeProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(111, 111, 111))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sqlVendaDataComprador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sqlGastoPorCliente)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sqlGastoPorCliente)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sqlVendaDataComprador1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sqlGastoPorCliente1)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sqlGastoPorCliente2)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtViewValidadeProduto)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sqlVendaDataComprador1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sqlGastoPorCliente1)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(106, Short.MAX_VALUE))
+                    .addComponent(sqlGastoPorCliente3)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -316,20 +388,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void sqlGastoPorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqlGastoPorClienteActionPerformed
 
-            new queryGastoPorCliente().setVisible(true);
+           new queryProdutoFornecedor().setVisible(true);
+       
     }//GEN-LAST:event_sqlGastoPorClienteActionPerformed
 
     private void sqlVendaDataComprador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqlVendaDataComprador1ActionPerformed
 
-    new queryQtdCompras().setVisible(true);
+            new queryComprasCliente().setVisible(true);
 
     }//GEN-LAST:event_sqlVendaDataComprador1ActionPerformed
 
     private void sqlGastoPorCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqlGastoPorCliente1ActionPerformed
 
-        new queryFiliaisCidade().setVisible(true);
+             new queryFiliaisCidade().setVisible(true);
 
     }//GEN-LAST:event_sqlGastoPorCliente1ActionPerformed
+
+    private void txtViewValidadeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewValidadeProdutoActionPerformed
+
+        new TelaViewValidadeProduto().setVisible(true);
+
+    }//GEN-LAST:event_txtViewValidadeProdutoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ 
+        new TelaViewVendasMensais().setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void sqlGastoPorCliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqlGastoPorCliente2ActionPerformed
+
+        new queryProdutoCliente().setVisible(true);
+
+    }//GEN-LAST:event_sqlGastoPorCliente2ActionPerformed
+
+    private void sqlGastoPorCliente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqlGastoPorCliente3ActionPerformed
+
+        new queryEmpFilial().setVisible(true);
+
+    }//GEN-LAST:event_sqlGastoPorCliente3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,15 +472,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btLotes;
     private javax.swing.JButton btProdutos;
     private javax.swing.JButton btVendas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton sqlGastoPorCliente;
     private javax.swing.JButton sqlGastoPorCliente1;
+    private javax.swing.JButton sqlGastoPorCliente2;
+    private javax.swing.JButton sqlGastoPorCliente3;
     private javax.swing.JButton sqlVendaDataComprador;
     private javax.swing.JButton sqlVendaDataComprador1;
+    private javax.swing.JButton txtViewValidadeProduto;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,17 +5,17 @@
 package View;
 
 import model.bean.Detalhes;
-import model.dao.DetalhesFornecedorDAO;
+import model.dao.DetalhesFilialDAO;
 /**
  *
  * @author franc
  */
-public class TelaDetalhesFornecedor extends javax.swing.JFrame {
+public class TelaDetalhesFilial extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaDetalhesProduto
      */
-    public TelaDetalhesFornecedor() {
+    public TelaDetalhesFilial() {
         initComponents();
         count();
        
@@ -24,7 +24,7 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
    
     public void count()
    {
-         DetalhesFornecedorDAO pdao = new DetalhesFornecedorDAO();
+         DetalhesFilialDAO pdao = new DetalhesFilialDAO();
             
             for(Detalhes p: pdao.count())
          {
@@ -46,7 +46,7 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Total de Fornecedores");
+        jLabel1.setText("Total de Filiais");
 
         txtCampo1.setEditable(false);
         txtCampo1.addActionListener(new java.awt.event.ActionListener() {
@@ -120,14 +120,26 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -136,7 +148,7 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaDetalhesFornecedor().setVisible(true);
+                new TelaDetalhesFilial().setVisible(true);
             }
         });
     }

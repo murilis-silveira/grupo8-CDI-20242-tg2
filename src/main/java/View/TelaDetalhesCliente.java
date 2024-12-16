@@ -5,26 +5,27 @@
 package View;
 
 import model.bean.Detalhes;
-import model.dao.DetalhesFornecedorDAO;
+import model.dao.DetalhesClienteDAO;
 /**
  *
  * @author franc
  */
-public class TelaDetalhesFornecedor extends javax.swing.JFrame {
+public class TelaDetalhesCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaDetalhesProduto
      */
-    public TelaDetalhesFornecedor() {
+    public TelaDetalhesCliente() {
         initComponents();
         count();
-       
+        countCPF();
+        countCNPJ();
     }
 
    
     public void count()
    {
-         DetalhesFornecedorDAO pdao = new DetalhesFornecedorDAO();
+         DetalhesClienteDAO pdao = new DetalhesClienteDAO();
             
             for(Detalhes p: pdao.count())
          {
@@ -33,6 +34,31 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
           }      
          
     }   
+    public void countCPF()
+   {
+         DetalhesClienteDAO pdao = new DetalhesClienteDAO();
+            
+            for(Detalhes p: pdao.countCPF())
+         {
+             txtCampo2.setText(p.getCount());                        
+                                      
+          }      
+         
+    }  
+    
+    public void countCNPJ()
+   {
+         DetalhesClienteDAO pdao = new DetalhesClienteDAO();
+            
+            for(Detalhes p: pdao.countCNPJ())
+         {
+             txtCampo3.setText(p.getCount());                        
+                                      
+          }      
+         
+    }  
+    
+    
        
     
     
@@ -43,15 +69,37 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtCampo1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtCampo2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtCampo3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Total de Fornecedores");
+        jLabel1.setText("Total de Clientes");
 
         txtCampo1.setEditable(false);
         txtCampo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCampo1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Pessoas Físicas");
+
+        txtCampo2.setEditable(false);
+        txtCampo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampo2ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Pessoas Jurídicas");
+
+        txtCampo3.setEditable(false);
+        txtCampo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampo3ActionPerformed(evt);
             }
         });
 
@@ -63,7 +111,11 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(255, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -73,7 +125,15 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,6 +163,14 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtCampo1ActionPerformed
 
+    private void txtCampo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampo2ActionPerformed
+
+    private void txtCampo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampo3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -120,14 +188,26 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaDetalhesFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDetalhesCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -136,14 +216,18 @@ public class TelaDetalhesFornecedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaDetalhesFornecedor().setVisible(true);
+                new TelaDetalhesCliente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCampo1;
+    private javax.swing.JTextField txtCampo2;
+    private javax.swing.JTextField txtCampo3;
     // End of variables declaration//GEN-END:variables
 }
