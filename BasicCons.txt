@@ -26,14 +26,21 @@ SELECT Produto.CodProd, Venda.CodNF, Cliente.Nome
 FROM Venda JOIN Cliente JOIN Produto
 WHERE Venda.CodCliente = Cliente.CodCliente AND Produto.CodNF = Venda.CodNF;
 
-Lista quantas filiais há em cada cidade;
+Lista quantas filiais há em cada cidade:
 
 SELECT Cidade.Nome, Count(*) as total_filiais
 FROM Cidade JOIN Filial
 Where Cidade.Nome = Filial.Cidade
 GROUP BY Cidade.Nome;
 
-View - Validade de Produto Não Vendido;]
+Lista as Filiais e quantos empregados possuem:
+
+SELECT Filial.CodFilial, COUNT(Empregado.CodEmp) AS total_empregado
+FROM Filial LEFT JOIN Empregado
+ON Filial.CodFilial = Empregado.CodFilial
+GROUP BY Filial.CodFilial;
+
+View - Validade de Produto Não Vendido;
 CREATE VIEW ValidadeProduto AS
 SELECT Produto.CodProd, Produto.CodBarras, Lote.DataVal, Fornecedor.CodForn, Fornecedor.CNPJ, fornecedor.Contato 
 FROM Produto JOIN Lote JOIN Fornecedor
